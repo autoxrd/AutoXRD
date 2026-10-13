@@ -11,7 +11,7 @@
 <body>
   <main>
     <nav class="topbar">
-      <a class="brand" href="#top" aria-label="AutoXRD home"><span class="brand-mark">A</span><span>AutoXRD</span></a>
+      <a class="brand" href="#top" aria-label="AutoXRD home"><img class="brand-wordmark" src="public/autoxrd-wordmark-v3.png" alt="AutoXRD" width="180" height="58"></a>
       <div class="nav-links"><a href="#method">Method</a><a href="#xrdbench">XRDBench</a><a href="#results">Results</a></div>
     </nav>
     <header class="hero" id="top">
@@ -19,7 +19,7 @@
       <h1><span>AutoXRD</span><small>Autonomous LLM Agents and Comprehensive Evaluation for Powder Diffraction Analysis</small></h1>
       <p class="hero-copy">Verifiable, stepwise powder X-ray diffraction analysis with executable crystallographic backends and scientific checks.</p>
       <div class="publication-links">
-        <a class="pill-link" href="#"><span class="pill-icon">↗</span><span><strong>Paper</strong><small>PDF</small></span></a>
+        <a class="pill-link" href=""><span class="pill-icon">↗</span><span><strong>Paper</strong><small>PDF</small></span></a>
         <a class="pill-link" href="http://15.235.218.70:8765/"><span class="pill-icon">◎</span><span><strong>XRDBench</strong><small>Interactive benchmark</small></span></a>
         <a class="pill-link" href="https://github.com/autoxrd/AutoXRD"><span class="pill-icon">&lt;/&gt;</span><span><strong>Code</strong><small>GitHub</small></span></a>
       </div>
@@ -37,7 +37,7 @@
     </section>
     <section class="section method-section" id="method">
       <div class="section-heading centered"><span class="eyebrow">Method</span><h2>AutoXRD: evidence-preserving scientific execution</h2><p>Planning, refinement backends, physical validation, and auditable trajectories in one agent framework.</p></div>
-      <figure class="figure-card wide-figure"><a href="public/figures/autoxrd-architecture.pdf" title="Open the vector PDF"><img src="public/figures/autoxrd-architecture.png" alt="Architecture of AutoXRD and XRDBench"></a><figcaption><strong>AutoXRD overview.</strong> Skill-guided planning, executable XRD tools, deterministic checks, and evidence-preserving refinement trajectories. Click the figure to open its vector PDF.</figcaption></figure>
+      <figure class="figure-card wide-figure"><a href="public/figures/autoxrd-architecture.pdf"><img src="public/figures/autoxrd-architecture.png" alt="Architecture of AutoXRD and XRDBench"></a><figcaption><strong>AutoXRD overview.</strong> Skill-guided planning, executable XRD tools, deterministic checks, and evidence-preserving refinement trajectories.</figcaption></figure>
     </section>
 
     <section class="section benchmark-section" id="xrdbench">
@@ -57,7 +57,7 @@
         <article class="accent-orange"><span>E2E mean</span><strong>53.7</strong><p>executable XRD workflows</p></article>
         <article class="accent-violet"><span>Best overall</span><strong>81.1</strong><p>GPT-5.6 Sol</p></article>
       </div>
-      <figure class="figure-card"><a href="public/figures/overall-performance.pdf" title="Open the vector PDF"><img src="public/figures/overall-performance.svg" alt="Overall, QA, and E2E performance of ten language models"></a><figcaption><strong>Overall performance.</strong> Scores combine XRDBench-QA and XRDBench-E2E with equal track weight. Click the figure to open its vector PDF.</figcaption></figure>
+      <figure class="figure-card"><a href="public/figures/overall-performance.pdf"><img src="public/figures/overall-performance.svg" alt="Overall, QA, and E2E performance of ten language models"></a><figcaption><strong>Overall performance.</strong> Scores combine XRDBench-QA and XRDBench-E2E with equal track weight.</figcaption></figure>
 
       <div class="subsection-heading"><span class="eyebrow">Fine-grained analysis</span><h3>Capability profiles expose different scientific bottlenecks</h3></div>
       <figure class="figure-card"><img src="public/figures/capability-radar.svg" alt="Fine-grained capability radar charts for QA and E2E tasks"><figcaption><strong>Capability profiles.</strong> Models are relatively strong at refinement-history assessment and result acceptance, but remain weak at action selection, phase quantification, indexing, and Rietveld refinement.</figcaption></figure>
@@ -67,22 +67,16 @@
     </section>
 
     <section class="section ablation-section">
-      <div class="section-heading"><span class="eyebrow">Ablation study</span><h2>Which AutoXRD components matter?</h2><p>All six evaluated components improve GPT-5.6 Luna on their targeted XRDBench-QA settings, with the largest gains from result-acceptance checks and final scientific review.</p></div>
-      <figure class="figure-card ablation-figure"><a href="public/figures/ablation-study.pdf" title="Open the vector PDF"><img src="public/figures/ablation-study.svg" alt="Score improvements from six AutoXRD components in GPT-5.6 Luna ablations"></a><figcaption><strong>Component effects.</strong> Bars report the full-system score minus the score after removing each component. Click the figure to open its vector PDF.</figcaption></figure>
+      <div class="section-heading"><span class="eyebrow orange">Workflow bottlenecks</span><h2>Scientific bottlenecks and component effects</h2></div>
+      <figure class="figure-card scientific-effects-figure">
+        <div class="scientific-effects-panels">
+          <div class="scientific-effects-panel"><a href="public/figures/e2e-bottlenecks.pdf"><img src="public/figures/e2e-bottlenecks.svg" alt="Heatmap of XRDBench-E2E scores, scoring-gate and completion rates, and effective evaluation components across eleven task families"></a><span class="panel-caption">(a) End-to-end task-family bottlenecks</span></div>
+          <div class="scientific-effects-panel"><a href="public/figures/ablation-study.pdf"><img src="public/figures/ablation-study.svg" alt="Full-system score gains from six AutoXRD components on GPT-5.6 Luna"></a><span class="panel-caption">(b) AutoXRD component effects</span></div>
+        </div>
+        <figcaption><strong>Figure 5: Scientific bottlenecks and component effects.</strong> (a) XRDBench-E2E scores, scoring-gate and completion rates, and effective evaluation components across eleven task families, averaged over ten models. (b) Full-system score gains from six AutoXRD components.</figcaption>
+      </figure>
     </section>
 
-    <section class="section findings-section">
-      <div class="section-heading centered"><span class="eyebrow orange">Findings</span><h2>Where current XRD agents still fail</h2></div>
-      <div class="finding-grid">
-        <article><span>01</span><h3>Scientific outcome failures</h3><p>Agents may execute a workflow successfully yet return inaccurate cells, HKL assignments, or structurally invalid refinements.</p></article>
-        <article><span>02</span><h3>Execution and evidence failures</h3><p>Missing code, invalid backend outputs, or incomplete artifacts prevent scoring and scientific verification.</p></article>
-        <article><span>03</span><h3>Termination failures</h3><p>Some trajectories consume nearly the full 50-step budget without producing a valid deliverable.</p></article>
-      </div>
-    </section>
-
-    <section class="citation-section citation-pending">
-      <div><span class="eyebrow">Citation</span><h2>AutoXRD</h2><p>BibTeX will be added when the public paper record is available.</p></div>
-    </section>
   </main>
   <footer><strong>AutoXRD</strong><span>Autonomous powder diffraction analysis with verifiable scientific execution.</span></footer>
 </body>
